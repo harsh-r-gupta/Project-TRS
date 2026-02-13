@@ -8,10 +8,16 @@ from colorama import Fore, Style, init
 import threading
 import time
 from rapidfuzz import fuzz
+import os
+from dotenv import load_dotenv
 
 # Initialize colorama & text-to-speech
 init()
 engine = pyttsx3.init()
+
+# Load environment variables from .env
+load_dotenv()
+API_KEY = os.getenv("API_KEY")
 
 # Load or create data files
 def load_json(filename, default):
@@ -25,8 +31,6 @@ user_data = load_json("user_data.json", {})
 reminders = load_json("reminders.json", [])
 notes = load_json("notes.json", [])
 
-# Bot settings
-API_KEY = "f53b477b98b19f6e74a16fe518181ff9"  # API key for current weather 
 mood = "neutral"
 
 # ---------------- Command Phrases ----------------

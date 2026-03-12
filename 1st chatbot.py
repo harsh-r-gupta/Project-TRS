@@ -15,11 +15,11 @@ from dotenv import load_dotenv
 init()
 engine = pyttsx3.init()
 
-# Load environment variables from .env
+
 load_dotenv()
 API_KEY = os.getenv("API_KEY")
 
-# Load or create data files
+
 def load_json(filename, default):
     try:
         with open(filename, "r") as f:
@@ -34,7 +34,7 @@ notes = load_json("notes.json", [])
 mood = "neutral"
 
 # ---------------- Command Phrases ----------------
-commands_map = load_json("commands.json", { #stores command phrases
+commands_map = load_json("commands.json", { 
     "add_note": ["add note", "make note", "create note", "write note", "jot down note"],
     "list_notes": ["list notes", "show notes", "display notes", "see notes"],
     "say_hi":["hi","hello","hey"],
@@ -274,7 +274,7 @@ def chatbot():
             list_notes()
 
         elif command == "say_hi":
-            print("hello, nice to meet you")
+            speak("hello, nice to meet you")
 
         elif command == "search_notes":
             keyword = input("Enter keyword to search: ")
